@@ -1,9 +1,15 @@
 package org.timesheet.humanresourcesdepartment.models.core;
 
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Date;
 
 @Entity
+@DynamicInsert
+@DynamicUpdate
 @Table(name = "groups")
 public class Group {
     @Id
@@ -12,8 +18,8 @@ public class Group {
     private String name;
     @Column(name = "is_active")
     private Integer isActive;
-    @Column(name = "created_at")
-    private Date createdAt;
+    @Column(name = "created_at", insertable = false, updatable = false)
+    private Timestamp createdAt;
 
     public Group() {
     }
@@ -42,11 +48,11 @@ public class Group {
         this.isActive = isActive;
     }
 
-    public Date getCreatedAt() {
+    public Timestamp getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
     }
 }

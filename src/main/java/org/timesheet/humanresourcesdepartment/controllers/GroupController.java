@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.*;
 import org.timesheet.humanresourcesdepartment.models.core.Group;
 import org.timesheet.humanresourcesdepartment.models.repositories.GroupRepository;
 
-import java.util.Date;
 import java.util.Optional;
 
 @RestController
@@ -20,27 +19,25 @@ public class GroupController {
         return groupRepository.findAll();
     }
 
-    /**
-     * TODO: setCreated + setIsActive не должны быть обязательными для записи
-     */
     @PostMapping("/add")
-    public Group add(@RequestParam String name) {
-        Group group = new Group();
-        group.setName(name);
-        group.setCreatedAt(new Date());
-        group.setIsActive(1);
+    public Group add(@ModelAttribute Group group) {
         groupRepository.save(group);
         return group;
     }
 
     @PostMapping("/update/{id}")
-    public Group update(@PathVariable Integer id, @RequestParam String name) {
+    public Group update(@PathVariable Integer id, @ModelAttribute Group group) {
         Optional<Group> optionalGroup = groupRepository.findById(id);
+
         if (optionalGroup.isPresent()) {
-            Group group = optionalGroup.get();
-            group.setName(name);
-            groupRepository.save(group);
+            Group storedGroup = optionalGroup.get();
+            storedGroup.setName(group.getName());
+            storedGroup.setIsActive(group.getIsActive());
+
+            groupRepository.save(storedGroup);
+            return storedGroup;
         }
+
         return null;
     }
 
