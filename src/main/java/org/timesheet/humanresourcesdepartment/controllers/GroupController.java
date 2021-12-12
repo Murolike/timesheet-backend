@@ -38,7 +38,7 @@ public class GroupController {
     }
 
     @PostMapping("/update/{id}")
-    public Group update(@PathVariable Integer id, @ModelAttribute Group group) {
+    public Group update(@PathVariable Integer id, @Valid @ModelAttribute Group group) {
         Group storedGroup = groupRepository.findById(id).orElseThrow(() -> new RuntimeException("Group not found by id " + id));
 
         storedGroup.setName(group.getName());
