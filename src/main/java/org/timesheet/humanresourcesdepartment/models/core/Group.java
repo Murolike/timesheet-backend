@@ -2,8 +2,14 @@ package org.timesheet.humanresourcesdepartment.models.core;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.Range;
+import org.hibernate.validator.constraints.UniqueElements;
+import org.springframework.validation.annotation.Validated;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 import java.util.Date;
 
@@ -15,9 +21,16 @@ public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @Column(unique = true)
+    @NotEmpty
+    @Length(min = 3, max = 255, message = "Group name length between 3 to 255")
     private String name;
+
     @Column(name = "is_active")
+    @Range(min = 0, max = 1)
     private Integer isActive;
+
     @Column(name = "created_at", insertable = false, updatable = false)
     private Timestamp createdAt;
 
