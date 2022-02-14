@@ -27,7 +27,7 @@ public class PositionController {
 
     @PostMapping("/update/{id}")
     public Position update(@PathVariable Integer id, @Valid @ModelAttribute @NotNull Position position) {
-        Position storedPosition = findById(id);
+        Position storedPosition = this.findById(id);
 
         storedPosition.setName(position.getName());
         storedPosition.setIsActive(position.getIsActive());
