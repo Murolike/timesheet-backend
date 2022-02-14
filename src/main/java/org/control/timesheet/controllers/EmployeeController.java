@@ -1,11 +1,11 @@
-package org.timesheet.humanresourcesdepartment.controllers;
+package org.control.timesheet.controllers;
 
+import org.control.timesheet.models.core.Employee;
+import org.control.timesheet.models.core.Group;
+import org.control.timesheet.models.core.Position;
+import org.control.timesheet.models.repositories.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.timesheet.humanresourcesdepartment.models.core.Employee;
-import org.timesheet.humanresourcesdepartment.models.core.Group;
-import org.timesheet.humanresourcesdepartment.models.core.Position;
-import org.timesheet.humanresourcesdepartment.models.repositories.EmployeeRepository;
 
 import javax.validation.Valid;
 

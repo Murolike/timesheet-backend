@@ -1,10 +1,10 @@
-package org.timesheet.humanresourcesdepartment.controllers;
+package org.control.timesheet.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.timesheet.humanresourcesdepartment.models.core.Employee;
-import org.timesheet.humanresourcesdepartment.models.core.Timesheet;
-import org.timesheet.humanresourcesdepartment.models.repositories.TimesheetRepository;
+import org.control.timesheet.models.core.Employee;
+import org.control.timesheet.models.core.Timesheet;
+import org.control.timesheet.models.repositories.TimesheetRepository;
 
 import javax.validation.Valid;
 import java.lang.reflect.InvocationTargetException;

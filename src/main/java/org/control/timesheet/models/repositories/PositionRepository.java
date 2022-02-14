@@ -1,7 +1,7 @@
-package org.timesheet.humanresourcesdepartment.models.repositories;
+package org.control.timesheet.models.repositories;
 
+import org.control.timesheet.models.core.Position;
 import org.springframework.data.repository.CrudRepository;
-import org.timesheet.humanresourcesdepartment.models.core.Position;
 
 public interface PositionRepository extends CrudRepository<Position, Integer> {
 }

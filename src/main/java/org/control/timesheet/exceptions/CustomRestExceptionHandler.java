@@ -1,5 +1,6 @@
-package org.timesheet.humanresourcesdepartment.exceptions;
+package org.control.timesheet.exceptions;
 
+import org.control.timesheet.api.DefaultApiErrorsFormatter;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -7,8 +8,7 @@ import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-import org.timesheet.humanresourcesdepartment.api.ApiError;
-import org.timesheet.humanresourcesdepartment.api.DefaultApiErrorsFormatter;
+import org.control.timesheet.api.ApiError;
 
 @ControllerAdvice
 public class CustomRestExceptionHandler extends ResponseEntityExceptionHandler {

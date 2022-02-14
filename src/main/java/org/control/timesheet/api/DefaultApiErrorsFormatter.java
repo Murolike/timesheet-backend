@@ -1,4 +1,4 @@
-package org.timesheet.humanresourcesdepartment.api;
+package org.control.timesheet.api;
 
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;

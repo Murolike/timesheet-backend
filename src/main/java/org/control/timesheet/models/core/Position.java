@@ -1,40 +1,43 @@
-package org.timesheet.humanresourcesdepartment.models.core;
+package org.control.timesheet.models.core;
 
-import org.hibernate.annotations.DynamicInsert;
-import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.*;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.Range;
-import org.hibernate.validator.constraints.UniqueElements;
-import org.springframework.validation.annotation.Validated;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
-import java.util.Date;
 
 @Entity
+@Table(name = "positions")
 @DynamicInsert
 @DynamicUpdate
-@Table(name = "groups")
-public class Group {
+public class Position {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(unique = true)
     @NotEmpty
-    @Length(min = 3, max = 255, message = "Group name length between 3 to 255")
+    @NotNull
+    @Length(min = 3, max = 255, message = "Position name must be length between 3 and 255")
     private String name;
 
     @Column(name = "is_active")
     @Range(min = 0, max = 1)
+    @ColumnDefault(value = "1")
+    @Generated(GenerationTime.INSERT)
     private Integer isActive;
 
     @Column(name = "created_at", insertable = false, updatable = false)
+    @ColumnDefault(value = "CURRENT_TIMESTAMP")
+    @Generated(GenerationTime.INSERT)
     private Timestamp createdAt;
 
-    public Group() {
+    public Position() {
     }
 
     public Integer getId() {

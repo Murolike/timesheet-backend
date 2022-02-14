@@ -1,8 +1,7 @@
-package org.timesheet.humanresourcesdepartment.api;
+package org.control.timesheet.api;
 
 import org.springframework.http.HttpStatus;
 
-import java.util.Collections;
 import java.util.List;
 
 public class ApiError {

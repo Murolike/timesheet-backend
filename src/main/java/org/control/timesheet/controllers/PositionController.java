@@ -1,9 +1,9 @@
-package org.timesheet.humanresourcesdepartment.controllers;
+package org.control.timesheet.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.timesheet.humanresourcesdepartment.models.core.Position;
-import org.timesheet.humanresourcesdepartment.models.repositories.PositionRepository;
+import org.control.timesheet.models.core.Position;
+import org.control.timesheet.models.repositories.PositionRepository;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;

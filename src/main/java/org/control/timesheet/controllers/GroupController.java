@@ -1,9 +1,9 @@
-package org.timesheet.humanresourcesdepartment.controllers;
+package org.control.timesheet.controllers;
 
+import org.control.timesheet.models.core.Group;
+import org.control.timesheet.models.repositories.GroupRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.timesheet.humanresourcesdepartment.models.core.Group;
-import org.timesheet.humanresourcesdepartment.models.repositories.GroupRepository;
 
 import javax.validation.Valid;
 

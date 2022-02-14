@@ -1,4 +1,4 @@
-package org.timesheet.humanresourcesdepartment.models.core;
+package org.control.timesheet.models.core;
 
 import org.hibernate.annotations.*;
 import org.hibernate.validator.constraints.Length;
@@ -10,8 +10,6 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import java.sql.Time;
 import java.sql.Timestamp;
 
 @Entity
