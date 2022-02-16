@@ -22,8 +22,7 @@ public class GroupController {
 
     @PostMapping("/add")
     public Group add(@Valid @ModelAttribute Group group) {
-        this.groupService.create(group);
-        return group;
+        return this.groupService.create(group);
     }
 
     @PostMapping("/update/{id}")

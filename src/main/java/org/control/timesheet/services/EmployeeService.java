@@ -16,16 +16,18 @@ public class EmployeeService {
         this.employeeRepository = employeeRepository;
     }
 
-    public void create(Employee employee) {
+    public Employee create(Employee employee) {
         Position position = employee.getPosition();
         Group group = employee.getGroup();
 
         employee.setPosition(position);
         employee.setGroup(group);
         this.employeeRepository.save(employee);
+
+        return employee;
     }
 
-    public void update(Integer id, Employee employee) {
+    public Employee update(Integer id, Employee employee) {
         Employee storedEmployee = this.findById(id);
         Group group = employee.getGroup();
         Position position = employee.getPosition();
@@ -39,7 +41,9 @@ public class EmployeeService {
         storedEmployee.setGroup(group);
         storedEmployee.setPosition(position);
 
-        employeeRepository.save(employee);
+        employeeRepository.save(storedEmployee);
+
+        return storedEmployee;
     }
 
     public Employee findById(Integer id) {

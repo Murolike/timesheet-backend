@@ -14,9 +14,6 @@ import javax.validation.Valid;
 @RequestMapping("employee")
 public class EmployeeController {
     @Autowired
-    private EmployeeRepository employeeRepository;
-
-    @Autowired
     private EmployeeService employeeService;
 
     @GetMapping("/index")
@@ -26,15 +23,12 @@ public class EmployeeController {
 
     @PostMapping("/add")
     public Employee add(@Valid @ModelAttribute Employee employee) {
-        this.employeeService.create(employee);
-
-        return employee;
+        return this.employeeService.create(employee);
     }
 
     @PostMapping("/update/{id}")
     public Employee update(@PathVariable Integer id, @Valid @ModelAttribute Employee employee) {
-        this.employeeService.update(id, employee);
-        return employee;
+        return this.employeeService.update(id, employee);
     }
 
     @GetMapping("/view/{id}")

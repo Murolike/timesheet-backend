@@ -14,8 +14,10 @@ public class GroupService {
         this.groupRepository = groupRepository;
     }
 
-    public void create(Group group) {
+    public Group create(Group group) {
         this.groupRepository.save(group);
+
+        return group;
     }
 
     public Group update(Integer id, Group group) {
