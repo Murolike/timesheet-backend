@@ -4,4 +4,5 @@ import org.springframework.data.repository.CrudRepository;
 import org.control.timesheet.models.core.Timesheet;
 
 public interface TimesheetRepository extends CrudRepository<Timesheet, Integer> {
+    Iterable<Timesheet> findByMonthAndYear(Integer month, Integer year);
 }
