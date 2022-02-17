@@ -1,11 +1,12 @@
 package org.control.timesheet.models.core;
 
-import org.hibernate.annotations.DynamicInsert;
-import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.*;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import java.sql.Timestamp;
 
@@ -28,7 +29,12 @@ public class Group {
     private Integer isActive;
 
     @Column(name = "created_at", insertable = false, updatable = false)
+    @ColumnDefault(value = "CURRENT_TIMESTAMP")
+    @Generated(GenerationTime.INSERT)
     private Timestamp createdAt;
+
+    @Column(name = "updated_at")
+    private Timestamp updatedAt;
 
     public Group() {
     }
@@ -63,5 +69,13 @@ public class Group {
 
     public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public Timestamp getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Timestamp updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }

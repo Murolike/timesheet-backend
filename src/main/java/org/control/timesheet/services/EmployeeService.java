@@ -7,6 +7,10 @@ import org.control.timesheet.models.repositories.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.sql.Timestamp;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 @Component
 public class EmployeeService {
     @Autowired
@@ -22,28 +26,29 @@ public class EmployeeService {
 
         employee.setPosition(position);
         employee.setGroup(group);
-        this.employeeRepository.save(employee);
 
-        return employee;
+        return this.employeeRepository.save(employee);
     }
 
     public Employee update(Integer id, Employee employee) {
-        Employee storedEmployee = this.findById(id);
+        Employee storedModel = this.findById(id);
         Group group = employee.getGroup();
         Position position = employee.getPosition();
 
-        storedEmployee.setName(employee.getName());
-        storedEmployee.setSurname(employee.getSurname());
-        storedEmployee.setPatronymic(employee.getPatronymic());
-        storedEmployee.setIsActive(employee.getIsActive());
-        storedEmployee.setHiringAt(employee.getHiringAt());
-        storedEmployee.setDismissalAt(employee.getDismissalAt());
-        storedEmployee.setGroup(group);
-        storedEmployee.setPosition(position);
+        Calendar calendar = new GregorianCalendar();
+        Timestamp updatedAt = new Timestamp(calendar.getTimeInMillis()); // can be method in this class
 
-        employeeRepository.save(storedEmployee);
+        storedModel.setUpdatedAt(updatedAt);
+        storedModel.setName(employee.getName());
+        storedModel.setSurname(employee.getSurname());
+        storedModel.setPatronymic(employee.getPatronymic());
+        storedModel.setIsActive(employee.getIsActive());
+        storedModel.setHiringAt(employee.getHiringAt());
+        storedModel.setDismissalAt(employee.getDismissalAt());
+        storedModel.setGroup(group);
+        storedModel.setPosition(position);
 
-        return storedEmployee;
+        return employeeRepository.save(storedModel);
     }
 
     public Employee findById(Integer id) {

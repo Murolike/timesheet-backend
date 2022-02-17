@@ -37,6 +37,9 @@ public class Position {
     @Generated(GenerationTime.INSERT)
     private Timestamp createdAt;
 
+    @Column(name = "updated_at")
+    private Timestamp updatedAt;
+
     public Position() {
     }
 
@@ -70,5 +73,13 @@ public class Position {
 
     public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public Timestamp getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Timestamp updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }

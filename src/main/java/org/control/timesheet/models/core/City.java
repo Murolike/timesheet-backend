@@ -1,11 +1,12 @@
 package org.control.timesheet.models.core;
 
-import org.hibernate.annotations.DynamicInsert;
-import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.*;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import java.sql.Timestamp;
 
@@ -29,9 +30,11 @@ public class City {
     private Integer isActive;
 
     @Column(name = "created_at", insertable = false, updatable = false)
+    @ColumnDefault(value = "CURRENT_TIMESTAMP")
+    @Generated(GenerationTime.INSERT)
     private Timestamp createdAt;
 
-    @Column(name = "updated_at", insertable = false, updatable = false)
+    @Column(name = "updated_at")
     private Timestamp updatedAt;
 
     public Integer getId() {

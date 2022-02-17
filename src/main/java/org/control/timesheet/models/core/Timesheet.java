@@ -65,9 +65,7 @@ public class Timesheet {
     @Generated(GenerationTime.INSERT)
     private Timestamp createdAt;
 
-    @Column(name = "updated_at", insertable = false, updatable = false)
-    @ColumnDefault(value = "CURRENT_TIMESTAMP")
-    @Generated(GenerationTime.ALWAYS)
+    @Column(name = "updated_at")
     private Timestamp updatedAt;
 
     public void setUpdatedAt(Timestamp updatedAt) {

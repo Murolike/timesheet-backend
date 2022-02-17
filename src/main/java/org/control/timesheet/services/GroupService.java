@@ -5,6 +5,10 @@ import org.control.timesheet.models.repositories.GroupRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.sql.Timestamp;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 @Component
 public class GroupService {
     @Autowired
@@ -21,14 +25,15 @@ public class GroupService {
     }
 
     public Group update(Integer id, Group group) {
-        Group storedGroup = this.findById(id);
+        Group storedModel = this.findById(id);
+        Calendar calendar = new GregorianCalendar();
+        Timestamp updatedAt = new Timestamp(calendar.getTimeInMillis()); // can be method in this class
 
-        storedGroup.setName(group.getName());
-        storedGroup.setIsActive(group.getIsActive());
+        storedModel.setUpdatedAt(updatedAt);
+        storedModel.setName(group.getName());
+        storedModel.setIsActive(group.getIsActive());
 
-        groupRepository.save(storedGroup);
-
-        return storedGroup;
+        return groupRepository.save(storedModel);
     }
 
     public Iterable<Group> findAll() {

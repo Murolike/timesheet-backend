@@ -32,8 +32,8 @@ public class CityService {
         storedModel.setName(city.getName());
         storedModel.setIsActive(city.getIsActive());
         storedModel.setUpdatedAt(updatedAt);
-        this.cityRepository.save(storedModel);
-        return storedModel;
+
+        return this.cityRepository.save(storedModel);
     }
 
     public City findById(Integer id) {

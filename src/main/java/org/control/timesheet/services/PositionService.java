@@ -6,6 +6,10 @@ import org.control.timesheet.models.repositories.PositionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.sql.Timestamp;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 @Component
 public class PositionService {
     @Autowired
@@ -16,19 +20,19 @@ public class PositionService {
     }
 
     public Position create(Position position) {
-        this.positionRepository.save(position);
-        return position;
+        return this.positionRepository.save(position);
     }
 
     public Position update(Integer id, Position position) {
         Position storedModel = this.findById(id);
+        Calendar calendar = new GregorianCalendar();
+        Timestamp updatedAt = new Timestamp(calendar.getTimeInMillis()); // can be method in this class
 
+        storedModel.setUpdatedAt(updatedAt);
         storedModel.setName(position.getName());
         storedModel.setIsActive(position.getIsActive());
 
-        positionRepository.save(storedModel);
-
-        return storedModel;
+        return positionRepository.save(storedModel);
     }
 
     public Iterable<Position> findAll() {

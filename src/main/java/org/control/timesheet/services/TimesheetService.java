@@ -19,8 +19,7 @@ public class TimesheetService {
     }
 
     public Timesheet create(Timesheet timesheet) {
-        this.timesheetRepository.save(timesheet);
-        return timesheet;
+        return this.timesheetRepository.save(timesheet);
     }
 
     public Timesheet update(Integer id, Timesheet timesheet) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
@@ -43,8 +42,7 @@ public class TimesheetService {
             setter.invoke(storedModel, getter.invoke(timesheet));
         }
 
-        timesheetRepository.save(storedModel);
-        return storedModel;
+        return timesheetRepository.save(storedModel);
     }
 
     public Timesheet findById(Integer id) {
